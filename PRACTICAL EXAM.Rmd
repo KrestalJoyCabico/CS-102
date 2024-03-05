@@ -1,0 +1,47 @@
+---
+title: "Practical"
+author: "Krestal Joy Cabico"
+date: "2024-03-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#A
+
+warpbreaks
+
+#1
+```{r}
+library(dplyr)
+numeric_columns <-summarise_all(warpbreaks,function(x)is.numeric(x)|is.integer(x))
+
+numeric_columns
+```
+
+```{r}
+warpbreaks <- data.frame(warpbreaks)
+
+warpbreaks <-lapply(warpbreaks, as.integer)
+warpbreaks
+```
+
+```{r}
+warpbreaks <- data.frame(warpbreaks)
+
+warpbreaks <-lapply(warpbreaks, as.numeric)
+warpbreaks
+```
+
+#B
+```{r}
+file_path ="exampleFile.txt"
+```
+
+
+```{r}
+(txt <-readLines("txt/exampleFile.txt"))
+
+```
