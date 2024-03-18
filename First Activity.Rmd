@@ -1,0 +1,60 @@
+---
+title: "Pre test"
+output: html_document
+date: "2024-01-23"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+``` {r}
+library(polite)
+library(rvest)
+library(httr)
+
+url <- 'https://www.amazon.com/s?i=specialty-aps&bbn=16225007011&rh=n%3A16225007011%2Cn%3A172456&ref=nav_em__nav_desktop_sa_intl_computer_accessories_and_peripherals_0_2_6_2'
+
+
+session <- bow(url,user_agent="Educational")
+session
+
+session_page <- scrape(session)
+
+div_elements <- html_nodes(session_page,'sg-col-4-of-24 sg-col-4-of-12 s-result-item s-asin sg-col-4-of-16 AdHolder sg-col s-widget-spacing-small sg-col-4-of-20')
+
+title<- character()
+brand_description <- character()
+price <- character()
+number_of_reviews <- character()
+rating <-  character()
+
+  
+title_element <- html_node(div_element, '=a-size-base-plus a-color-base a-text-normal')
+title <- ifelse(!is.na(title_element), html_text(title_element), '')
+  
+price_element <- html_node(div_element, 'span.a-price-whole')
+price <- ifelse(!is.na(price_element), html_text(price_element), '')
+
+brand_description <- html_node(div_element, 'span.a-color-base')
+brand <- ifelse(!is.na(brand_description), html_text(brand_description), '')
+  
+ rating_element <- html_node(div_element, 'span.a-icon-alt')
+  rating <- ifelse(!is.na(rating_element), html_text(rating_element), '')
+
+  titles <- c(titles, title)
+  prices <- c(prices, price)
+  brand <- c(brands, brand)
+  ratings <- c(ratings, rating)
+ 
+}
+
+
+product_df <- data.frame(Title = titles, 
+                         Price = prices,
+                         Brand = brands,
+                         Rating = ratings)
+
+write.csv(product_df, "product.csv")
+
+```
