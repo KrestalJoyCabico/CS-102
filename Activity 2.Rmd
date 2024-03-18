@@ -15,9 +15,15 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
+```{r}
+library(polite)
+library(dplyr)
+library(rvest)
+library(stringr)
+library(purr)
+library(readr)
 ```
+
 
 ```{r num1}
 
@@ -49,9 +55,12 @@ for (page_num in 2:15) {
   reviews <- bind_rows(reviews, webpage %>% html_nodes(".review-container") %>% map_df(extract_review_info))
 }
 
+write.csv(reviews, file = "The Beekeeper.csv", row.names = FALSE)
 
-View(head(reviews, 300))
+print(data.frame)
+
 ```
+
 
 ```{r num2}
 
@@ -83,9 +92,12 @@ for (page_num in 2:15) {
   reviews <- bind_rows(reviews, webpage %>% html_nodes(".review-container") %>% map_df(extract_review_info))
 }
 
+write.csv(reviews, file = "True Detective.csv", row.names = FALSE)
 
-View(head(reviews, 300))
+print(data.frame)
 ```
+
+
 ```{r num3}
 
 url <- 'https://www.imdb.com/title/tt0068646/?ref_=chttp_t_2' 
@@ -117,8 +129,12 @@ for (page_num in 2:15) {
 }
 
 
-View(head(reviews, 300))
+write.csv(reviews, file = "The Godfather.csv", row.names = FALSE)
+
+print(data.frame)
 ```
+
+
 ```{r num4}
 
 url <- 'https://www.imdb.com/title/tt0468569/?ref_=chttp_t_3' 
@@ -149,9 +165,12 @@ for (page_num in 2:15) {
   reviews <- bind_rows(reviews, webpage %>% html_nodes(".review-container") %>% map_df(extract_review_info))
 }
 
+write.csv(reviews, file = "The Dark Knight.csv", row.names = FALSE)
 
-View(head(reviews, 300))
+print(data.frame)
 ```
+
+
 ```{r num5}
 
 url <- 'https://www.imdb.com/title/tt0071562/?ref_=chttp_t_4' 
@@ -182,9 +201,12 @@ for (page_num in 2:15) {
   reviews <- bind_rows(reviews, webpage %>% html_nodes(".review-container") %>% map_df(extract_review_info))
 }
 
+write.csv(reviews, file = "The Godfather Part II.csv", row.names = FALSE)
 
-View(head(reviews, 300))
+print(data.frame)
 ```
+
+
 ```{r num6}
 
 url <- 'https://www.imdb.com/title/tt0050083/?ref_=chttp_t_5' 
@@ -215,9 +237,11 @@ for (page_num in 2:15) {
   reviews <- bind_rows(reviews, webpage %>% html_nodes(".review-container") %>% map_df(extract_review_info))
 }
 
+write.csv(reviews, file = "12 Angry Men.csv", row.names = FALSE)
 
-View(head(reviews, 300))
+print(data.frame)
 ```
+
 
 ```{r num7}
 
@@ -249,9 +273,11 @@ for (page_num in 2:15) {
   reviews <- bind_rows(reviews, webpage %>% html_nodes(".review-container") %>% map_df(extract_review_info))
 }
 
+write.csv(reviews, file = "Schindler's List.csv", row.names = FALSE)
 
-View(head(reviews, 300))
+print(data.frame)
 ```
+
 
 ```{r num8}
 
@@ -283,9 +309,11 @@ for (page_num in 2:15) {
   reviews <- bind_rows(reviews, webpage %>% html_nodes(".review-container") %>% map_df(extract_review_info))
 }
 
+write.csv(reviews, file = "The Lord of the Rings: The Return of the King.csv", row.names = FALSE)
 
-View(head(reviews, 300))
+print(data.frame)
 ```
+
 
 ```{r num9}
 
@@ -317,9 +345,12 @@ for (page_num in 2:15) {
   reviews <- bind_rows(reviews, webpage %>% html_nodes(".review-container") %>% map_df(extract_review_info))
 }
 
+write.csv(reviews, file = "Pulp Fiction.csv", row.names = FALSE)
 
-View(head(reviews, 300))
+print(data.frame)
 ```
+
+
 
 ```{r num10}
 
@@ -351,6 +382,7 @@ for (page_num in 2:15) {
   reviews <- bind_rows(reviews, webpage %>% html_nodes(".review-container") %>% map_df(extract_review_info))
 }
 
+write.csv(reviews, file = "The Lord of the Rings: The Fellowship of the Ring.csv", row.names = FALSE)
 
-View(head(reviews, 300))
+print(data.frame)
 ```
